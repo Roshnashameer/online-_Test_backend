@@ -8,7 +8,7 @@ exports.jwtMiddleware = (req, res, next) => {
             throw new Error("Authorization header missing");
         }
         const token = header.split(" ")[1];
-        // console.log(token);
+        console.log(token);
         const JWTresponse = jwt.verify(token, 'supersecretkey123');
         
         req.payload = JWTresponse._id;
