@@ -1,14 +1,25 @@
-const express = require('express')
+const express = require("express");
 
-const router = new express.Router()
+const router = new express.Router();
 
-const { signUp, questions, submit, results } = require("../controller/userControler")
-const { jwtMiddleware } = require('../middlewares/jwtMiddleware')
+const {
+  signUp,
+  questions,
+  submit,
+  results,
+} = require("../controller/userControler");
+const { jwtMiddleware } = require("../middlewares/jwtMiddleware");
 
-// User creation
-router.post('/register',signUp)
-router.get('/questions',jwtMiddleware,questions)
-router.post('/:id/submit',jwtMiddleware,submit)
-router.get('/:id/results',results)
+// POST:User creation
+router.post("/register", signUp);
 
-module.exports=router
+//GET:AccessQuestions
+router.get("/questions", jwtMiddleware, questions);
+
+//POST:Submit Answers
+router.post("/:id/submit", jwtMiddleware, submit);
+
+//GET:results
+router.get("/:id/results", results);
+
+module.exports = router;
