@@ -10,14 +10,16 @@ const {
 } = require("../controller/userControler");
 const { jwtMiddleware } = require("../middlewares/jwtMiddleware");
 
-// GET:User creation
+// POST:User creation
 router.post("/register", signUp);
 
+//GET:AccessQuestions
 router.get("/questions", jwtMiddleware, questions);
 
-//POST:submit
+//POST:Submit Answers
 router.post("/:id/submit", jwtMiddleware, submit);
 
+//GET:results
 router.get("/:id/results", results);
 
 module.exports = router;
